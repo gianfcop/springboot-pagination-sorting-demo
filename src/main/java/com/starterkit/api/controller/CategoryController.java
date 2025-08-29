@@ -9,10 +9,6 @@ import com.starterkit.api.dto.request.CategoryRequest;
 import com.starterkit.api.dto.response.CategoryResponse;
 import com.starterkit.api.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.media.ArraySchema;
-import io.swagger.v3.oas.annotations.media.Content;
-import io.swagger.v3.oas.annotations.media.Schema;
-import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -33,20 +29,7 @@ public class CategoryController {
 
     @Operation(
         summary = "Create a new category",
-        description = "Creates a category using a CategoryRequest DTO",
-        requestBody = @io.swagger.v3.oas.annotations.parameters.RequestBody(
-            description = "Category details",
-            required = true,
-            content = @Content(schema = @Schema(implementation = CategoryRequest.class))
-        ),
-        responses = {
-            @ApiResponse(
-                responseCode = "201",
-                description = "Category successfully created",
-                content = @Content(schema = @Schema(implementation = CategoryResponse.class))
-            ),
-            @ApiResponse(responseCode = "409", description = "Category already exists")
-        }
+        description = "Creates a category using a CategoryRequest DTO"
     )
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<CategoryResponse> createCategory(@RequestBody CategoryRequest request) {
@@ -56,14 +39,7 @@ public class CategoryController {
 
     @Operation(
         summary = "Get all categories",
-        description = "Retrieves a list of all categories using CategoryResponse DTO",
-        responses = {
-            @ApiResponse(
-                responseCode = "200",
-                description = "Successful retrieval",
-                content = @Content(array = @ArraySchema(schema = @Schema(implementation = CategoryResponse.class)))
-            )
-        }
+        description = "Retrieves a list of all categories using CategoryResponse DTO"
     )
     @GetMapping(produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<List<CategoryResponse>> getAllCategories() {
