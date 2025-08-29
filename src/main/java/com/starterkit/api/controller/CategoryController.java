@@ -9,6 +9,7 @@ import com.starterkit.api.dto.request.CategoryRequest;
 import com.starterkit.api.dto.response.CategoryResponse;
 import com.starterkit.api.service.CategoryService;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +30,13 @@ public class CategoryController {
 
     @Operation(
         summary = "Create a new category",
-        description = "Creates a category using a CategoryRequest DTO"
+        description = "Creates a category using a CategoryRequest DTO",
+        responses = {
+            @ApiResponse(
+                responseCode = "201",
+                description = "Category successfully created"
+            )
+        }
     )
     @PostMapping(consumes = APPLICATION_JSON_VALUE, produces = APPLICATION_JSON_VALUE)
     public ResponseEntity<CategoryResponse> createCategory(@RequestBody CategoryRequest request) {
