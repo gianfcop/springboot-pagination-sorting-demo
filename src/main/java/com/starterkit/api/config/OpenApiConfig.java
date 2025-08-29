@@ -5,8 +5,6 @@
  */
 package com.starterkit.api.config;
 
-import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;
-import io.swagger.v3.oas.annotations.security.SecurityScheme;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
@@ -15,21 +13,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@SecurityScheme(
-    name = "Bearer Authentication",
-    type = SecuritySchemeType.HTTP,
-    bearerFormat = "JWT",
-    scheme = "bearer"
-)
 public class OpenApiConfig {
 
     @Bean
     public OpenAPI customOpenAPI() {
         return new OpenAPI()
             .info(new Info()
-                .title("StarterKit API")
+                .title("Spring Boot Pagination & Sorting API")
                 .version("1.0.0")
-                .description("Spring Boot Starter Kit with JWT Authentication")
+                .description("\"A practical starter kit for building RESTful APIs in Spring Boot, featuring pagination, sorting, DTO mapping, and an extensible architecture ready for real-world projects.")
                 .contact(new Contact()
                     .name("Your Name")
                     .email("contact@example.com"))

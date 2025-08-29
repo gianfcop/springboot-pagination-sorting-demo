@@ -32,7 +32,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RestController
 @RequestMapping("/api/products")
 @RequiredArgsConstructor
-@Tag(name = "Products", description = "Basic R/W operations for products with pagination and sorting examples")
+@Tag(name = "Products", description = "Endpoints for managing products, including advanced pagination and sorting features")
 public class ProductController {
 
     private final ProductService productService;
